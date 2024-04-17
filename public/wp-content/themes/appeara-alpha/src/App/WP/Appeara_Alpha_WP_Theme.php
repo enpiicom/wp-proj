@@ -11,7 +11,14 @@ use Enpii_Base\Foundation\WP\WP_Theme;
 class Appeara_Alpha_WP_Theme extends WP_Theme {
 
 	public function get_name(): string {
-		return 'Appeara Alpha';
+		$tmp = __( 'Appeara Alpha', 'enpii');
+		$tmp .= __( 'Another translation');
+		/* translators: %d: Number of string */
+		$tmp .= _n( '%d thing.', '%d things.', 4, 'enpii' );
+		$tmp .= $this->__( 'Some thing' );
+		$tmp .= _x( 'Comment', 'noun' );
+		$tmp = __( 'Another translation 01') . __( 'Appeara Alpha 04', 'enpii') . _n( '%d guy.', '%d guys.', 1, 'enpii' ) . $this->__( 'Some thing 02' ) . _x( 'Comment 02', 'noun' );
+		return $tmp;
 	}
 
 	public function get_version(): string {
@@ -50,5 +57,9 @@ class Appeara_Alpha_WP_Theme extends WP_Theme {
 
 		add_post_type_support( 'page', 'page-attributes' );
 		add_post_type_support( 'post', 'page-attributes' );
+	}
+
+	public function __( string $text ): string {
+		return __( $text, $this->get_text_domain() );
 	}
 }

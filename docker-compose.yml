@@ -15,8 +15,8 @@ services:
       - ./dev-docker/config/nginx/http.conf:/etc/nginx/site-opts.d/http.conf
       - ./dev-docker/config/nginx/https.conf:/etc/nginx/site-opts.d/https.conf
       # For WordPress site
+      - ./:/var/www/html
       - ./.env:/var/www/html/.env
-      - ./public:/var/www/html/public
       - /var/www/html/public/wp-content/cache
       - /var/www/html/public/wp-content/upgrade
       - /var/www/html/public/wp-content/uploads

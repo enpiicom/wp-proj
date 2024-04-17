@@ -4,7 +4,7 @@ FROM npbtrac/php80_web
 COPY ./dev-docker/config/nginx/http.conf /etc/nginx/site-opts.d/http.conf
 COPY ./dev-docker/config/nginx/https.conf /etc/nginx/site-opts.d/https.conf
 
-COPY ./public /var/www/html/public
+COPY ./ /var/www/html/
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN chmod +x wp-cli.phar
