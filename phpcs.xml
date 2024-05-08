@@ -3,10 +3,10 @@
 	<description>The custom ruleset for the VIP Coding Standards itself.</description>
 
 	<!-- Include the plugin files. -->
-	<file>./wp-content/plugins/demoda/</file>
+	<file>./public/wp-content/plugins/demoda/</file>
 
 	<!-- Include the theme files. -->
-	<file>./wp-content/themes/appeara-alpha/</file>
+	<file>./public/wp-content/themes/appeara-alpha/</file>
 
 	<!-- Exclude vendor, other dependencies directories. -->
 	<exclude-pattern>*/.git/*</exclude-pattern>

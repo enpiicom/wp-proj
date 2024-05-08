@@ -1,0 +1,9 @@
+<?php
+
+namespace Enpii\Appeara_Alpha\App\WP;
+
+use Tests\Support\Global_Functions_Mocker;
+
+function add_theme_support(...$args) {
+	return call_user_func_array([Global_Functions_Mocker::class, 'add_theme_support'], $args);
+}

@@ -1,14 +1,30 @@
 FROM npbtrac/php80_web
 
-# Putting config files to their locations
-COPY ./dev-docker/config/nginx/http.conf /etc/nginx/site-opts.d/http.conf
-COPY ./dev-docker/config/nginx/https.conf /etc/nginx/site-opts.d/https.conf
+RUN apt update -y
+RUN apt install php8.0-xdebug
 
-COPY ./ /var/www/html/
+# Install Node 16 and Yarn
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
+	&& apt install -y nodejs \
+	&& npm install -g yarn
 
+# Install WP CLI
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
+
+# Putting config files to their locations
+COPY ./dev-docker/config/nginx/http.conf /etc/nginx/site-opts.d/http.conf
+COPY ./dev-docker/config/nginx/https.conf /etc/nginx/site-opts.d/https.conf
+COPY ./dev-docker/config/php/custom.ini /etc/php/8.0/cli/conf.d/99-custom.ini
+COPY ./dev-docker/config/php/xdebug.ini /etc/php/8.0/cli/conf.d/20-xdebug.ini
+
+# Do not mount the /init file in docker command or docker compose as it would cause the
+#	the script cannot be executed
+COPY ./dev-docker/init /init
+RUN chmod +x /init
+
+COPY ./ /var/www/html/
 
 # Prepare folders
 RUN mkdir -p /var/www/html/public/wp-content/uploads/ /var/www/html/public/wp-content/upgrade/ /var/www/html/public/wp-content/cache/
@@ -17,9 +33,4 @@ RUN chmod -R 777 /var/www/html/public/wp-content/uploads/ /var/www/html/public/w
 RUN mkdir -p /var/www/html/public/wp-content/plugins var/www/html/public/wp-content/themes
 RUN chmod 777 /var/www/html/public/wp-content/plugins var/www/html/public/wp-content/themes
 
-# Install Node 18 and Yarn
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
-	&& apt install -y nodejs \
-	&& npm install -g yarn
-
-WORKDIR /var/www/html/public
+WORKDIR /var/www/html

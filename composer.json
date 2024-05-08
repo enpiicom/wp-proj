@@ -1,133 +1,141 @@
 {
-    "name": "enpii/wp-proj",
-    "type": "wordpress-project",
-    "description": "The WordPress project setup for WordPress modern development with Laravel featuring EnpiiBase plugin",
-    "license": "MIT",
-    "keywords": [
-      "wordpress",
-      "laravel",
-      "boilerplate",
-      "wordpress laravel",
-      "EnpiiBase",
-      "EnpiiTeam",
-      "EnpiiDev"
-    ],
-    "authors": [
-      {
-          "name": "EnpiiTeam",
-          "email": "dev@enpii.com",
-          "homepage": "https://team.enpii.com"
-      },
-      {
-        "name": "Trac Nguyen",
-        "email": "npbtrac@yahoo.com"
-      }
-    ],
-    "require": {
-      "josegonzalez/dotenv": "4.0.0",
-      "mcaskill/composer-exclude-files": "^3.0.0",
-      "johnpbloch/wordpress-core": "^6.0",
-      "wp-plugins/woocommerce": "^8.0",
-      "wpackagist-theme/storefront": "^4.0",
-      "wpackagist-theme/twentytwentyfour": "^1.0.0",
-      "enpii/enpii-base": "*",
-      "enpii/demoda": "*",
-      "enpii/appeara-alpha": "*",
-      "php": "^8.0"
+  "name": "enpii/wp-proj",
+  "type": "wordpress-project",
+  "description": "The WordPress project setup for WordPress modern development with Laravel featuring EnpiiBase plugin",
+  "license": "MIT",
+  "keywords": [
+    "wordpress",
+    "laravel",
+    "boilerplate",
+    "wordpress laravel",
+    "EnpiiBase",
+    "EnpiiTeam",
+    "EnpiiDev"
+  ],
+  "authors": [
+    {
+        "name": "EnpiiTeam",
+        "email": "dev@enpii.com",
+        "homepage": "https://team.enpii.com"
     },
-    "require-dev": {
-      "10up/wp_mock": "^1.0.0",
-      "automattic/vipwpcs": "^3.0.0",
-      "phpcompatibility/php-compatibility": "^9.3.5",
-      "codeception/codeception": "^5.0.0",
-      "codeception/module-asserts": "^3.0",
-      "codeception/module-phpbrowser": "^3.0"
+    {
+      "name": "Trac Nguyen",
+      "email": "npbtrac@yahoo.com"
+    }
+  ],
+  "require": {
+    "josegonzalez/dotenv": "4.0.0",
+    "mcaskill/composer-exclude-files": "^3.0.0",
+    "johnpbloch/wordpress-core": "^6.0",
+    "wp-plugins/woocommerce": "^8.0",
+    "wpackagist-theme/storefront": "^4.0",
+    "wpackagist-theme/twentytwentyfour": "^1.0.0",
+    "enpii/enpii-base": "*",
+    "enpii/demoda": "*",
+    "enpii/appeara-alpha": "*",
+    "php": "^8.0"
+  },
+  "require-dev": {
+    "automattic/vipwpcs": "^3.0.0",
+    "phpcompatibility/php-compatibility": "^9.3.5",
+    "phpunit/phpunit": "^9.6",
+    "mockery/mockery": "^1.6",
+    "brain/monkey": "^2.6.0",
+    "10up/wp_mock": "^1.0.0",
+    "codeception/codeception": "^5.0.0",
+    "codeception/module-asserts": "^3.0",
+    "codeception/module-phpbrowser": "^3.0"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org",
+      "only": [
+        "wpackagist-plugin/*",
+        "wpackagist-theme/*"
+      ]
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "repositories": [
-      {
-        "type": "composer",
-        "url": "https://wpackagist.org",
-        "only": [
-          "wpackagist-plugin/*",
-          "wpackagist-theme/*"
-        ]
-      },
-      {
-        "type": "path",
-        "url": "./public/wp-content/plugins/demoda"
-      },
-      {
-        "type": "path",
-        "url": "./public/wp-content/themes/appeara-alpha"
-      },
-      {
-        "type": "package",
-        "package": {
-          "name": "wp-plugins/woocommerce",
-          "version": "8.1.0",
-          "type": "wordpress-plugin",
-          "dist": {
-            "type": "zip",
-            "url": "https://downloads.wordpress.org/plugin/woocommerce.8.1.0.zip"
-          }
+    {
+      "type": "path",
+      "url": "./public/wp-content/plugins/demoda"
+    },
+    {
+      "type": "path",
+      "url": "./public/wp-content/themes/appeara-alpha"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "wp-plugins/woocommerce",
+        "version": "8.8.3",
+        "type": "wordpress-plugin",
+        "dist": {
+          "type": "zip",
+          "url": "https://downloads.wordpress.org/plugin/woocommerce.8.8.3.zip"
         }
       }
+    }
+  ],
+  "autoload-dev": {
+    "files": [
     ],
-    "config": {
-      "php": "8.0",
-      "platform-check": true,
-      "allow-plugins": {
-            "composer/installers": true,
-            "johnpbloch/wordpress-core-installer": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "mcaskill/composer-exclude-files": true
-        },
-      "vendor-dir": "./public/vendor",
-      "sort-packages": true
-    },
-    "extra": {
-      "exclude-from-files": [
-        "laravel/framework/src/Illuminate/Foundation/helpers.php"
+    "psr-4": {
+      "Tests\\": "tests"
+    }
+  },
+  "config": {
+    "php": "8.0",
+    "platform-check": true,
+    "allow-plugins": {
+          "composer/installers": true,
+          "johnpbloch/wordpress-core-installer": true,
+          "dealerdirect/phpcodesniffer-composer-installer": true,
+          "mcaskill/composer-exclude-files": true
+      },
+    "vendor-dir": "./public/vendor",
+    "sort-packages": true
+  },
+  "extra": {
+    "exclude-from-files": [
+      "laravel/framework/src/Illuminate/Foundation/helpers.php"
+    ],
+    "installer-paths": {
+      "public/wp-content/mu-plugins/{$name}/": [
+        "type:wordpress-muplugin"
       ],
-      "installer-paths": {
-        "public/wp-content/mu-plugins/{$name}/": [
-          "type:wordpress-muplugin"
-        ],
-        "public/wp-content/themes/{$name}/": [
-          "type:wordpress-theme"
-        ],
-        "public/wp-content/plugins/{$name}/": [
-          "type:wordpress-plugin"
-        ]
-      }
-    },
-    "scripts": {
-      "post-create-project-cmd": [
-        "cp .env.example .env"
+      "public/wp-content/themes/{$name}/": [
+        "type:wordpress-theme"
       ],
-      "post-install-cmd": [
-        "cp -r `find ./public/vendor/johnpbloch/wordpress-core -maxdepth 1 -mindepth 1 | cut -c3- | grep -vE 'wp-content$|composer.json$|composer.lock$|wp-cli.yml$|README.md$|LICENSE.md$'` ./public",
-        "rm -rf `find ./public/vendor/johnpbloch/wordpress-core -maxdepth 1 -mindepth 1 | cut -c3- | grep -vE 'license.txt|readme.html'`"
-      ],
-      "post-update-cmd": [
-        "cp -r `find ./public/vendor/johnpbloch/wordpress-core -maxdepth 1 -mindepth 1 | cut -c3- | grep -vE 'wp-content$|composer.json$|composer.lock$|wp-cli.yml$|README.md$|LICENSE.md$'` ./public",
-        "rm -rf `find ./public/vendor/johnpbloch/wordpress-core -maxdepth 1 -mindepth 1 | cut -c3- | grep -vE 'license.txt|readme.html'`"
-      ],
-      "dev-update": [
-        "cp -r `find ./public/vendor/johnpbloch/wordpress-core -maxdepth 1 -mindepth 1 | cut -c3- | grep -vE 'wp-content$|composer.json$|composer.lock$|wp-cli.yml$|README.md$|LICENSE.md$'` ./public",
-        "rm -rf `find ./public/vendor/johnpbloch/wordpress-core -maxdepth 1 -mindepth 1 | cut -c3- | grep -vE 'license.txt|readme.html'`"
-      ],
-      "phpcs": [
-        "./vendor/bin/phpcs"
-      ],
-      "phpunit": [
-        "./vendor/bin/phpunit"
-      ],
-      "test": [
-        "@phpcs",
-        "@phpunit"
+      "public/wp-content/plugins/{$name}/": [
+        "type:wordpress-plugin"
       ]
     }
+  },
+  "scripts": {
+    "post-create-project-cmd": [
+      "cp .env.example .env"
+    ],
+    "post-install-cmd": [
+      "cp -r `find ./public/vendor/johnpbloch/wordpress-core -maxdepth 1 -mindepth 1 | cut -c3- | grep -vE 'wp-content$|composer.json$|composer.lock$|wp-cli.yml$|README.md$|LICENSE.md$'` ./public",
+      "rm -rf `find ./public/vendor/johnpbloch/wordpress-core -maxdepth 1 -mindepth 1 | cut -c3- | grep -vE 'license.txt|readme.html'`"
+    ],
+    "post-update-cmd": [
+      "cp -r `find ./public/vendor/johnpbloch/wordpress-core -maxdepth 1 -mindepth 1 | cut -c3- | grep -vE 'wp-content$|composer.json$|composer.lock$|wp-cli.yml$|README.md$|LICENSE.md$'` ./public",
+      "rm -rf `find ./public/vendor/johnpbloch/wordpress-core -maxdepth 1 -mindepth 1 | cut -c3- | grep -vE 'license.txt|readme.html'`"
+    ],
+    "dev-update": [
+      "cp -r `find ./public/vendor/johnpbloch/wordpress-core -maxdepth 1 -mindepth 1 | cut -c3- | grep -vE 'wp-content$|composer.json$|composer.lock$|wp-cli.yml$|README.md$|LICENSE.md$'` ./public",
+      "rm -rf `find ./public/vendor/johnpbloch/wordpress-core -maxdepth 1 -mindepth 1 | cut -c3- | grep -vE 'license.txt|readme.html'`"
+    ],
+    "phpcbf": "php -d xdebug.max_nesting_level=512 ./public/vendor/bin/phpcbf",
+    "phpcs": "php -d xdebug.max_nesting_level=512 ./public/vendor/bin/phpcs",
+    "codecept": "php -d xdebug.max_nesting_level=512 ./public/vendor/bin/codecept",
+    "codecept-unit": "@codecept run unit",
+    "test": [
+      "@phpcs",
+      "@codecept-unit"
+    ]
   }
+}

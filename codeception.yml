@@ -1,0 +1,35 @@
+namespace: Tests
+support_namespace: Support
+suites:
+  unit:
+    bootstrap: ../bootstrap-unit.php
+    path: ./Unit
+    actor: UnitTester
+    step_decorators: ~
+    settings:processIsolation: true
+    modules:
+      enabled:
+        - Asserts
+
+settings:
+  shuffle: false
+  lint: true
+paths:
+  tests: tests
+  output: tests/_output
+  support: tests/Support
+  data: tests/Support/Data
+coverage:
+  remote: false
+  enabled: true
+  include:
+    - public/wp-content/plugins/demoda/src/*
+    - public/wp-content/themes/appeara-alpha/src/*
+  exclude:
+    - public/wp-content/themes/appeara-alpha/src/App/Support/*
+  format: html
+  lower_limit: 30
+  upper_limit: 80
+  processUncoveredFiles: true
+  show_only_summary: false
+  show_uncovered: true

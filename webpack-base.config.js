@@ -16,6 +16,7 @@ const optimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 module.exports.buildConfig = function (webpackVariables) {
 	return {
 		entry: webpackVariables.webpackParams.entryPath,
+		devtool: 'inline-source-map',
 		output: {
 			filename: webpackVariables.webpackParams.jsOutputPath,
 			path: path.resolve(__dirname),
@@ -102,7 +103,7 @@ module.exports.buildConfig = function (webpackVariables) {
 
 			// notifier plugin
 			new webpackBuildNotifierPlugin({
-				title: "WP Theme Webpack Build",
+				title: "WP Webpack Build",
 				suppressSuccess: true
 			}),
 		],

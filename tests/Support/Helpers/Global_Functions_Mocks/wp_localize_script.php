@@ -1,0 +1,9 @@
+<?php
+
+namespace Enpii\Appeara_Alpha\App\WP;
+
+use Tests\Support\Global_Functions_Mocker;
+
+function wp_localize_script(...$args) {
+	return call_user_func_array([Global_Functions_Mocker::class, 'wp_localize_script'], $args);
+}
