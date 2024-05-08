@@ -1,0 +1,31 @@
+*
+!.gitignore
+!cache
+!uploads
+!upgrade
+
+# Languages
+!languages/
+!languages/**
+
+# MU Plugins
+!mu-plugins
+mu-plugins/**
+!mu-plugins/bedrock-autoloader.php
+
+# Plugins
+!plugins
+plugins/**
+!plugins/.gitkeep
+
+# Themes
+!themes
+themes/**
+!themes/.gitkeep
+
+# Put your themes, plugins exception here, e.g.
+!plugins/demoda
+!plugins/demoda/**
+
+!themes/appeara-alpha
+!themes/appeara-alpha/**
