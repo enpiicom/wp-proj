@@ -993,7 +993,7 @@
         },
         {
             "name": "enpii/appeara-alpha",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./public/wp-content/themes/appeara-alpha",
@@ -1045,7 +1045,7 @@
         },
         {
             "name": "enpii/demoda",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./public/wp-content/plugins/demoda",
@@ -1096,16 +1096,16 @@
         },
         {
             "name": "enpii/enpii-base",
-            "version": "v0.6.0",
+            "version": "v0.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/enpiicom/wp-plugin-enpii-base.git",
-                "reference": "9ee6ff2812a6babab971366c253b9f14df8f806f"
+                "reference": "586796c585c52b244502319bbaf1c5621ddbbd12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/enpiicom/wp-plugin-enpii-base/zipball/9ee6ff2812a6babab971366c253b9f14df8f806f",
-                "reference": "9ee6ff2812a6babab971366c253b9f14df8f806f",
+                "url": "https://api.github.com/repos/enpiicom/wp-plugin-enpii-base/zipball/586796c585c52b244502319bbaf1c5621ddbbd12",
+                "reference": "586796c585c52b244502319bbaf1c5621ddbbd12",
                 "shasum": ""
             },
             "require": {
@@ -1167,9 +1167,9 @@
             "homepage": "https://enpii.com/wp-plugin-enpii-base",
             "support": {
                 "issues": "https://github.com/enpiicom/wp-plugin-enpii-base/issues",
-                "source": "https://github.com/enpiicom/wp-plugin-enpii-base/tree/v0.6.0"
+                "source": "https://github.com/enpiicom/wp-plugin-enpii-base/tree/v0.6.1"
             },
-            "time": "2024-04-11T15:14:04+00:00"
+            "time": "2024-05-02T15:14:04+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -9658,5 +9658,5 @@
         "php": "^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }
