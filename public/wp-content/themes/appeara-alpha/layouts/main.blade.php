@@ -16,6 +16,8 @@ do_action( 'get_header' );
 
 	<div id="site-placeholder" class="site">
 
+		@include('sections/site-header')
+
 		<div id="content" class="site-content" tabindex="0">
 			<div class="col-full">
 
@@ -28,10 +30,7 @@ do_action( 'get_header' );
 			</div><!-- .col-full -->
 		</div><!-- #content -->
 
-		<footer class="site-footer" role="contentinfo">
-			<div class="col-full">
-			</div><!-- .col-full -->
-		</footer>
+		@include('sections/site-footer')
 
 	</div><!-- #site-placeholder -->
 

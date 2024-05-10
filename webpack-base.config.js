@@ -51,6 +51,7 @@ module.exports.buildConfig = function (webpackVariables) {
                             loader: 'css-loader',
                             options: {
                                 sourceMap: true,
+                                url: false,
                             },
 
                         },
@@ -73,23 +74,6 @@ module.exports.buildConfig = function (webpackVariables) {
                             }
                         }
                     ]
-                },
-                // Define fonts and images url from theme dir
-                {
-                    test: /\.(woff|woff2|eot|ttf|otf)$/,
-                    loader: 'file-loader',
-                    options: {
-                        outputPath: webpackVariables.webpackParams.fontOutputPath,
-                        name: '[name].[ext]'
-                    }
-                },
-                {
-                    test: /\.(png|svg|jpg|gif)$/,
-                    loader: 'file-loader',
-                    options: {
-                        outputPath: webpackVariables.webpackParams.imageOutputPath,
-                        name: '[name].[ext]'
-                    }
                 },
             ]
         },
