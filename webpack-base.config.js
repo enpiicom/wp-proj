@@ -4,8 +4,11 @@
 const path = require('path');
 const webpackBuildNotifierPlugin = require('webpack-build-notifier');
 const uglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const miniCssExtractPlugin = require("mini-css-extract-plugin");
-const cssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const miniCssExtractPlugin = require('mini-css-extract-plugin');
+const cssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const {PurgeCSSPlugin} = require('purgecss-webpack-plugin');
+const browserSyncPlugin = require('browser-sync-webpack-plugin')
+const glob = require('glob');
 
 module.exports.buildConfig = function (webpackVariables) {
     return {
@@ -101,6 +104,30 @@ module.exports.buildConfig = function (webpackVariables) {
                 title: "WP Webpack Build",
                 suppressSuccess: true
             }),
+
+            // remove unused css
+            new PurgeCSSPlugin({
+                paths: glob.sync(`${webpackVariables.webpackParams.entryPath}/**/*`, {nodir: true}),
+            }),
+
+            new browserSyncPlugin(
+                // BrowserSync options
+                {
+                    // browse to http://localhost:3000/ during development, or replace with your local development url
+                    // host: 'localhost',
+                    // port: 3000,
+                    // proxy the Webpack Dev Server endpoint
+                    // (which should be serving on http://localhost:3100/)
+                    // through BrowserSync
+                    // proxy: 'http://localhost:3100/'
+                },
+                // plugin options
+                {
+                    // prevent BrowserSync from reloading the page
+                    // and let Webpack Dev Server take care of this
+                    reload: false
+                }
+            )
         ],
         optimization: {
             minimizer: [
