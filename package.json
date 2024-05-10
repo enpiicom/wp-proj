@@ -44,23 +44,20 @@
     "dotenv": "^16.4.5",
     "dotenv-webpack": "^8.1.0",
     "file-loader": "^6.2.0",
-    "glob": "^10.3.14",
     "i": "^0.3.7",
     "mini-css-extract-plugin": "^2.9.0",
     "postcss": "^8.4.38",
     "postcss-loader": "^8.1.1",
-    "purgecss-webpack-plugin": "^6.0.0",
     "resolve-url-loader": "^5.0.0",
     "sass": "^1.77.0",
     "sass-loader": "^14.2.1",
     "source-map-loader": "^5.0.0",
-    "typescript": "^5.4.5",
+    "terser-webpack-plugin": "^5.3.10",
     "ts-loader": "^9.5.1",
-    "uglifyjs-webpack-plugin": "^2.2.0",
+    "typescript": "^5.4.5",
     "webpack": "^5.91.0",
     "webpack-build-notifier": "^2.3.0",
     "webpack-cli": "^5.1.4"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }

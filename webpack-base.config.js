@@ -2,13 +2,11 @@
  * WEBPACK CONFIGURATION
  */
 const path = require('path');
-const webpackBuildNotifierPlugin = require('webpack-build-notifier');
-const uglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const miniCssExtractPlugin = require('mini-css-extract-plugin');
-const cssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const {PurgeCSSPlugin} = require('purgecss-webpack-plugin');
-const browserSyncPlugin = require('browser-sync-webpack-plugin')
-const glob = require('glob');
+const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
+const TerserPlugin = require("terser-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
 module.exports.buildConfig = function (webpackVariables) {
     return {
@@ -44,14 +42,14 @@ module.exports.buildConfig = function (webpackVariables) {
                 // inject CSS to page
                 {
                     test: /\.css$/i,
-                    use: [miniCssExtractPlugin.loader, 'style-loader', 'css-loader', 'postcss-loader']
+                    use: [MiniCssExtractPlugin.loader, 'style-loader', 'css-loader', 'postcss-loader']
                 },
 
                 // compile all .scss files to plain old css
                 {
                     test: /\.(sass|scss)$/,
                     use: [
-                        miniCssExtractPlugin.loader,
+                        MiniCssExtractPlugin.loader,
                         {
                             loader: 'css-loader',
                             options: {
@@ -87,17 +85,17 @@ module.exports.buildConfig = function (webpackVariables) {
         },
         plugins: [
             // extract css into dedicated file
-            new miniCssExtractPlugin({
+            new MiniCssExtractPlugin({
                 filename: webpackVariables.webpackParams.cssOutputPath,
             }),
 
             // notifier plugin
-            new webpackBuildNotifierPlugin({
+            new WebpackBuildNotifierPlugin({
                 title: "WP Webpack Build",
                 suppressSuccess: true
             }),
 
-            new browserSyncPlugin(
+            new BrowserSyncPlugin(
                 // BrowserSync options
                 {
                     // browse to http://localhost:3000/ during development, or replace with your local development url
@@ -117,15 +115,19 @@ module.exports.buildConfig = function (webpackVariables) {
             )
         ],
         optimization: {
+            minimize: true,
             minimizer: [
                 // enable the js minification plugin
-                new uglifyJSPlugin({
-                    cache: true,
+                new TerserPlugin({
                     parallel: true,
-                    sourceMap: true,
+                    terserOptions: {
+                        sourceMap: true,
+                        compress: true,
+                    },
+                    extractComments: true,
                 }),
                 // enable the css minification plugin
-                new cssMinimizerPlugin(),
+                new CssMinimizerPlugin(),
             ]
         }
     }
