@@ -106,28 +106,28 @@ module.exports.buildConfig = function (webpackVariables) {
             }),
 
             // remove unused css
-            new PurgeCSSPlugin({
-                paths: glob.sync(`${webpackVariables.webpackParams.entryPath}/**/*`, {nodir: true}),
-            }),
+            // new PurgeCSSPlugin({
+            //     paths: glob.sync(`${webpackVariables.webpackParams.entryPath}/**/*`, {nodir: true}),
+            // }),
 
-            new browserSyncPlugin(
-                // BrowserSync options
-                {
-                    // browse to http://localhost:3000/ during development, or replace with your local development url
-                    // host: 'localhost',
-                    // port: 3000,
-                    // proxy the Webpack Dev Server endpoint
-                    // (which should be serving on http://localhost:3100/)
-                    // through BrowserSync
-                    // proxy: 'http://localhost:3100/'
-                },
-                // plugin options
-                {
-                    // prevent BrowserSync from reloading the page
-                    // and let Webpack Dev Server take care of this
-                    reload: false
-                }
-            )
+            // new browserSyncPlugin(
+            //     // BrowserSync options
+            //     {
+            //         // browse to http://localhost:3000/ during development, or replace with your local development url
+            //         host: 'localhost',
+            //         port: 3000,
+            //         // proxy the Webpack Dev Server endpoint
+            //         // (which should be serving on http://localhost:3100/)
+            //         // through BrowserSync
+            //         proxy: 'http://localhost:3100/'
+            //     },
+            //     // plugin options
+            //     {
+            //         // prevent BrowserSync from reloading the page
+            //         // and let Webpack Dev Server take care of this
+            //         reload: false
+            //     }
+            // )
         ],
         optimization: {
             minimizer: [
