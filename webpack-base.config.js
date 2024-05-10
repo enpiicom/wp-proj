@@ -2,19 +2,20 @@
  * WEBPACK CONFIGURATION
  */
 const path = require('path');
-const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
-const TerserPlugin = require("terser-webpack-plugin");
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const webpackBuildNotifierPlugin = require('webpack-build-notifier');
+const TerserPlugin = require('terser-webpack-plugin');
+const miniCssExtractPlugin = require("mini-css-extract-plugin");
+const cssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
-module.exports.buildConfig = function (webpackVariables) {
+module.exports.buildConfig = function (webpackVariables, mode) {
+    const isProduction = mode === 'production';
     return {
+        devtool: isProduction ? false : 'inline-source-map',
         entry: webpackVariables.webpackParams.entryPath,
         output: {
             filename: webpackVariables.webpackParams.jsOutputPath,
             path: path.resolve(__dirname),
         },
-        devtool: 'inline-source-map',
         module: {
             rules: [
                 {
@@ -41,20 +42,21 @@ module.exports.buildConfig = function (webpackVariables) {
                 // inject CSS to page
                 {
                     test: /\.css$/i,
-                    use: [MiniCssExtractPlugin.loader, 'style-loader', 'css-loader', 'postcss-loader']
+                    use: [miniCssExtractPlugin.loader, 'style-loader', 'css-loader', 'postcss-loader']
                 },
 
                 // compile all .scss files to plain old css
                 {
                     test: /\.(sass|scss)$/,
                     use: [
-                        MiniCssExtractPlugin.loader,
+                        miniCssExtractPlugin.loader,
                         {
                             loader: 'css-loader',
                             options: {
-                                url: false,
                                 sourceMap: true,
+                                url: false
                             },
+
                         },
                         {
                             loader: 'resolve-url-loader',
@@ -78,23 +80,22 @@ module.exports.buildConfig = function (webpackVariables) {
                 },
             ]
         },
-        resolve: {
-            extensions: ['.ts', '.tsx', '.js'],
-        },
         plugins: [
             // extract css into dedicated file
-            new MiniCssExtractPlugin({
+            new miniCssExtractPlugin({
                 filename: webpackVariables.webpackParams.cssOutputPath,
             }),
 
             // notifier plugin
-            new WebpackBuildNotifierPlugin({
+            new webpackBuildNotifierPlugin({
                 title: "WP Webpack Build",
                 suppressSuccess: true
             }),
         ],
+        resolve: {
+            extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        },
         optimization: {
-            minimize: true,
             minimizer: [
                 // enable the js minification plugin
                 new TerserPlugin({
@@ -103,10 +104,9 @@ module.exports.buildConfig = function (webpackVariables) {
                         sourceMap: true,
                         compress: true,
                     },
-                    extractComments: true,
                 }),
                 // enable the css minification plugin
-                new CssMinimizerPlugin(),
+                new cssMinimizerPlugin(),
             ]
         }
     }
