@@ -6,16 +6,15 @@ const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 const TerserPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
 module.exports.buildConfig = function (webpackVariables) {
     return {
-        devtool: 'inline-source-map',
         entry: webpackVariables.webpackParams.entryPath,
         output: {
             filename: webpackVariables.webpackParams.jsOutputPath,
             path: path.resolve(__dirname),
         },
+        devtool: 'inline-source-map',
         module: {
             rules: [
                 {
@@ -53,10 +52,9 @@ module.exports.buildConfig = function (webpackVariables) {
                         {
                             loader: 'css-loader',
                             options: {
-                                sourceMap: true,
                                 url: false,
+                                sourceMap: true,
                             },
-
                         },
                         {
                             loader: 'resolve-url-loader',
@@ -94,25 +92,6 @@ module.exports.buildConfig = function (webpackVariables) {
                 title: "WP Webpack Build",
                 suppressSuccess: true
             }),
-
-            new BrowserSyncPlugin(
-                // BrowserSync options
-                {
-                    // browse to http://localhost:3000/ during development, or replace with your local development url
-                    host: 'localhost',
-                    port: 3000,
-                    // proxy the Webpack Dev Server endpoint
-                    // (which should be serving on http://localhost:3100/)
-                    // through BrowserSync
-                    proxy: 'http://localhost:3100/'
-                },
-                // plugin options
-                {
-                    // prevent BrowserSync from reloading the page
-                    // and let Webpack Dev Server take care of this
-                    reload: false
-                }
-            )
         ],
         optimization: {
             minimize: true,
