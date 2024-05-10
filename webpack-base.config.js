@@ -20,6 +20,11 @@ module.exports.buildConfig = function (webpackVariables) {
         },
         module: {
             rules: [
+                {
+                    test: /\.tsx?$/,
+                    use: 'ts-loader',
+                    exclude: /node_modules/,
+                },
                 // perform js babelization on all .js files
                 {
                     test: /\.js$/,
@@ -76,6 +81,9 @@ module.exports.buildConfig = function (webpackVariables) {
                     ]
                 },
             ]
+        },
+        resolve: {
+            extensions: ['.ts', '.tsx', '.js'],
         },
         plugins: [
             // extract css into dedicated file

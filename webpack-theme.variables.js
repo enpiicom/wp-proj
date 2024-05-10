@@ -4,7 +4,8 @@ const basePath = './public/wp-content/themes/appeara-alpha';
 var webpackParams = {
     // Input file path
     entryPath: {
-        main: [
+    	app: basePath + '/public-assets/src/js/app.ts',
+		main: [
 			basePath + '/public-assets/src/js/main.js',
 			basePath + '/public-assets/src/scss/main.scss',
 		],
