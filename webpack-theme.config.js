@@ -1,9 +1,11 @@
 /**
  * WEBPACK CONFIGURATION
  */
+
 const baseConfig = require('./webpack-base.config');
 
-// include webpack variables
-const themeVariableds = require('./webpack-theme.variables');
+const themeVariables = require('./webpack-theme.variables');
 
-module.exports = baseConfig.buildConfig(themeVariableds);
+module.exports = function (env, argv) {
+    return baseConfig.buildConfig(themeVariables, argv.mode);
+};

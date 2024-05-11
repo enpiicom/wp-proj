@@ -17,11 +17,7 @@ var webpackParams = {
     // Output for CSS and JS
     jsOutputPath: basePath + '/public-assets/dist/js/[name].js',
     cssOutputPath: basePath + '/public-assets/dist/css/[name].css',
-    fontOutputPath: basePath + '/public-assets/dist/fonts/[name].[ext]',
-    fontRelativePath: '../../../../../../../',
-	imageOutputPath: basePath + '/public-assets/dist/img/[name].[ext]',
-    imageRelativePath: '../../../../../../../',
 };
 
-module.exports = {webpackParams};
+module.exports = { webpackParams };
 
