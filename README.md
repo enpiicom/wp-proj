@@ -22,7 +22,7 @@ cp .env.example .env
 ## Development
 - Install (or update) the dependencies
 ```
-docker run --rm --interactive --tty -e XDEBUG_MODE=off -v $PWD:/app npbtrac/php80_cli composer install
+docker run --rm --interactive --tty -e XDEBUG_MODE=off -v $PWD:/app -v ~/.composer:/root/.composer npbtrac/php80_cli composer install
 ```
 
 ### Deploy with Docker

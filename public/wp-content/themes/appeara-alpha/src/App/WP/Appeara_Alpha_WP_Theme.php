@@ -56,6 +56,7 @@ class Appeara_Alpha_WP_Theme extends WP_Theme {
 
 		wp_enqueue_style( $this->get_theme_slug() . 'main-style', $this->get_base_url() . '/public-assets/dist/css/main.css', [], $version );
 		wp_enqueue_script( $this->get_theme_slug() . 'main-script', $this->get_base_url() . '/public-assets/dist/js/main.js', [], $version, true );
+		wp_enqueue_script( $this->get_theme_slug() . 'app-script', $this->get_base_url() . '/public-assets/dist/js/app.js', [], $version, true );
 		wp_localize_script(
 			$this->get_theme_slug() . 'main-localize_script',
 			'wpAjax',

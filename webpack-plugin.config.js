@@ -1,9 +1,11 @@
 /**
  * WEBPACK CONFIGURATION
  */
+
 const baseConfig = require('./webpack-base.config');
 
-// include webpack variables
-const pluginVariableds = require('./webpack-plugin.variables');
+const pluginVariables = require('./webpack-plugin.variables');
 
-module.exports = baseConfig.buildConfig(pluginVariableds);
+module.exports = function (env, argv) {
+    return baseConfig.buildConfig(pluginVariables, argv.mode);
+};

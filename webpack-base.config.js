@@ -1,123 +1,113 @@
 /**
  * WEBPACK CONFIGURATION
  */
-
 const path = require('path');
-
-// include the js minification plugin
-const uglifyJSPlugin = require('uglifyjs-webpack-plugin');
-
 const webpackBuildNotifierPlugin = require('webpack-build-notifier');
-
-// include the css extraction and minification plugins
+const TerserPlugin = require('terser-webpack-plugin');
 const miniCssExtractPlugin = require("mini-css-extract-plugin");
-const optimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const cssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
-module.exports.buildConfig = function (webpackVariables) {
-	return {
-		entry: webpackVariables.webpackParams.entryPath,
-		devtool: 'inline-source-map',
-		output: {
-			filename: webpackVariables.webpackParams.jsOutputPath,
-			path: path.resolve(__dirname),
-		},
-		module: {
-			rules: [
-				// perform js babelization on all .js files
-				{
-					test: /\.js$/,
-					exclude: /node_modules/,
-					use: {
-						loader: "babel-loader",
-						options: {
-							presets: ['babel-preset-env']
-						}
-					}
-				},
+module.exports.buildConfig = function (webpackVariables, mode) {
+    const isProduction = mode === 'production';
+    return {
+        devtool: isProduction ? false : 'inline-source-map',
+        entry: webpackVariables.webpackParams.entryPath,
+        output: {
+            filename: webpackVariables.webpackParams.jsOutputPath,
+            path: path.resolve(__dirname),
+        },
+        module: {
+            rules: [
+                {
+                    test: /\.tsx?$/,
+                    use: 'ts-loader',
+                    exclude: /node_modules/,
+                },
+                // perform js babelization on all .js files
+                {
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            ['@babel/preset-env', {targets: "defaults"}]
+                        ]
+                    }
+                },
+                {
+                    test: /\.js$/,
+                    enforce: "pre",
+                    use: ["source-map-loader"],
+                },
+                // inject CSS to page
+                {
+                    test: /\.css$/i,
+                    use: [miniCssExtractPlugin.loader, 'style-loader', 'css-loader', 'postcss-loader']
+                },
 
-				// inject CSS to page
-				{
-					test: /\.css$/,
-					use: ['style-loader', 'css-loader']
-				},
+                // compile all .scss files to plain old css
+                {
+                    test: /\.(sass|scss)$/,
+                    use: [
+                        miniCssExtractPlugin.loader,
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                sourceMap: true,
+                                url: false
+                            },
 
-				// compile all .scss files to plain old css
-				{
-					test: /\.(sass|scss)$/,
-					use: [
-						miniCssExtractPlugin.loader,
-						{
-							loader: 'css-loader',
-							options: {
-								sourceMap: true,
-							},
+                        },
+                        {
+                            loader: 'resolve-url-loader',
+                            options: {
+                                sourceMap: true,
+                            },
+                        },
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                sourceMap: true
+                            }
+                        },
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                sourceMap: true
+                            }
+                        }
+                    ]
+                },
+            ]
+        },
+        plugins: [
+            // extract css into dedicated file
+            new miniCssExtractPlugin({
+                filename: webpackVariables.webpackParams.cssOutputPath,
+            }),
 
-						},
-						{
-							loader: 'resolve-url-loader',
-							options: {
-								sourceMap: true,
-							},
-						},
-						{
-							loader: 'postcss-loader',
-							options: {
-								sourceMap: true,
-								config: {
-									path: 'postcss.config.js'
-								}
-							},
-						},
-						{
-							loader: 'sass-loader',
-							options: {
-								sourceMap: true
-							}
-						}
-					]
-				},
-				// Define fonts and images url from theme dir
-				{
-					test: /\.(woff|woff2|eot|ttf|otf)$/,
-					loader: 'file-loader',
-					options: {
-						publicPath: webpackVariables.webpackParams.fontRelativePath,
-						name: webpackVariables.webpackParams.fontOutputPath,
-					}
-				},
-				{
-					test: /\.(png|svg|jpg|gif)$/,
-					loader: 'file-loader',
-					options: {
-						publicPath: webpackVariables.webpackParams.imageRelativePath,
-						name: webpackVariables.webpackParams.imageOutputPath,
-					}
-				},
-			]
-		},
-		plugins: [
-			// extract css into dedicated file
-			new miniCssExtractPlugin({
-				filename: webpackVariables.webpackParams.cssOutputPath,
-			}),
-
-			// notifier plugin
-			new webpackBuildNotifierPlugin({
-				title: "WP Webpack Build",
-				suppressSuccess: true
-			}),
-		],
-
-		optimization: {
-			minimizer: [
-				// enable the js minification plugin
-				new uglifyJSPlugin({
-					cache: true,
-					parallel: true
-				}),
-				// enable the css minification plugin
-				new optimizeCSSAssetsPlugin({})
-			]
-		}
-	}
+            // notifier plugin
+            new webpackBuildNotifierPlugin({
+                title: "WP Webpack Build",
+                suppressSuccess: true
+            }),
+        ],
+        resolve: {
+            extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        },
+        optimization: {
+            minimizer: [
+                // enable the js minification plugin
+                new TerserPlugin({
+                    parallel: true,
+                    terserOptions: {
+                        sourceMap: true,
+                        compress: true,
+                    },
+                }),
+                // enable the css minification plugin
+                new cssMinimizerPlugin(),
+            ]
+        }
+    }
 };

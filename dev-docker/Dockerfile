@@ -4,7 +4,7 @@ RUN apt update -y
 RUN apt install php8.0-xdebug
 
 # Install Node 16 and Yarn
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
 	&& apt install -y nodejs \
 	&& npm install -g yarn
 
