@@ -1,0 +1,13 @@
+.site-header {
+	&__container {
+		padding: 0.2rem;
+	}
+
+	.header-logo {
+		background-image: url("../../../img/img-placeholder.png");
+		height: 60px;
+		width: auto;
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+}

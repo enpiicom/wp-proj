@@ -32,7 +32,9 @@
     "wpackagist-theme/twentytwentyfour": "^1.0.0",
     "enpii/enpii-base": "dev-master",
     "enpii/demoda": "*",
+    "enpii/enpii-html-components": "*",
     "enpii/appeara-alpha": "*",
+    "enpii/enpii-2024": "*",
     "php": "^8.0"
   },
   "require-dev": {
@@ -63,7 +65,15 @@
     },
     {
       "type": "path",
+      "url": "./public/wp-content/plugins/enpii/enpii-html-components"
+    },
+    {
+      "type": "path",
       "url": "./public/wp-content/themes/appeara-alpha"
+    },
+    {
+      "type": "path",
+      "url": "./public/wp-content/themes/enpii-2024"
     },
     {
       "type": "package",

@@ -27,5 +27,11 @@ themes/**
 !plugins/demoda
 !plugins/demoda/**
 
+!plugins/enpii-html-components
+!plugins/enpii-html-components/**
+
 !themes/appeara-alpha
 !themes/appeara-alpha/**
+
+!themes/enpii-2024
+!themes/enpii-2024/**
