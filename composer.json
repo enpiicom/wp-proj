@@ -31,7 +31,6 @@
     "wp-theme/storefront": "^4.0",
     "wpackagist-theme/twentytwentyfour": "^1.0.0",
     "enpii/enpii-base": "dev-master",
-    "enpii/enpii-html-components": "*",
     "enpii/demoda": "*",
     "enpii/appeara-alpha": "*",
     "php": "^8.0"
@@ -61,10 +60,6 @@
     {
       "type": "path",
       "url": "./public/wp-content/plugins/demoda"
-    },
-    {
-      "type": "path",
-      "url": "./public/wp-content/plugins/enpii-html-components"
     },
     {
       "type": "path",
