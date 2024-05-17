@@ -28,9 +28,10 @@
     "mcaskill/composer-exclude-files": "^3.0.0",
     "johnpbloch/wordpress-core": "^6.0",
     "wp-plugins/woocommerce": "^8.0",
-    "wpackagist-theme/storefront": "^4.0",
+    "wp-theme/storefront": "^4.0",
     "wpackagist-theme/twentytwentyfour": "^1.0.0",
-    "enpii/enpii-base": "*",
+    "enpii/enpii-base": "dev-master",
+    "enpii/enpii-html-components": "*",
     "enpii/demoda": "*",
     "enpii/appeara-alpha": "*",
     "php": "^8.0"
@@ -63,6 +64,10 @@
     },
     {
       "type": "path",
+      "url": "./public/wp-content/plugins/enpii-html-components"
+    },
+    {
+      "type": "path",
       "url": "./public/wp-content/themes/appeara-alpha"
     },
     {
@@ -74,6 +79,18 @@
         "dist": {
           "type": "zip",
           "url": "https://downloads.wordpress.org/plugin/woocommerce.8.8.3.zip"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "wp-theme/storefront",
+        "version": "4.6.0",
+        "type": "wordpress-theme",
+        "dist": {
+          "type": "zip",
+          "url": "https://downloads.wordpress.org/theme/storefront.4.6.0.zip"
         }
       }
     }
