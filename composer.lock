@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "68334fbda3223d2805a6a5d6a9e98690",
+    "content-hash": "1279d5fe64a73506327f77c84c0acfaf",
     "packages": [
         {
             "name": "brick/math",
@@ -1171,45 +1171,6 @@
                 "source": "https://github.com/enpiicom/wp-plugin-enpii-base/tree/master"
             },
             "time": "2024-05-12T17:14:04+00:00"
-        },
-        {
-            "name": "enpii/enpii-html-components",
-            "version": "dev-develop",
-            "dist": {
-                "type": "path",
-                "url": "./public/wp-content/plugins/enpii-html-components",
-                "reference": "c524ed8cdc79cdff4cd8a41ea3133a32fb3bca37"
-            },
-            "require": {
-                "php": "^7.3|^8.0"
-            },
-            "type": "wordpress-plugin",
-            "autoload": {
-                "psr-4": {
-                    "Enpii_Html_Components\\": "src"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Trac Nguyen",
-                    "email": "npbtrac@yahoo.com",
-                    "homepage": "https://github.com/npbtrac"
-                }
-            ],
-            "description": "The WordPress plugin for Enpii HTML Components",
-            "keywords": [
-                "enpii",
-                "enpii-base",
-                "laravel",
-                "wordpress",
-                "wordpress laravel"
-            ],
-            "transport-options": {
-                "relative": true
-            }
         },
         {
             "name": "graham-campbell/result-type",
