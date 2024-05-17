@@ -30,7 +30,7 @@
     "wp-plugins/woocommerce": "^8.0",
     "wp-theme/storefront": "^4.0",
     "wpackagist-theme/twentytwentyfour": "^1.0.0",
-    "enpii/enpii-base": "dev-master",
+    "enpii/enpii-base": "dev-wp-release",
     "enpii/demoda": "*",
     "enpii/enpii-html-components": "*",
     "enpii/appeara-alpha": "*",
@@ -65,7 +65,7 @@
     },
     {
       "type": "path",
-      "url": "./public/wp-content/plugins/enpii/enpii-html-components"
+      "url": "./public/wp-content/plugins/enpii-html-components"
     },
     {
       "type": "path",
