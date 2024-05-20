@@ -30,7 +30,7 @@ The Docker file is built on top of `serversideup/docker-php` https://github.com/
 
 - Start all containers
 ```
-docker-compose compose up -d
+docker-compose up -d
 ```
 then the website would be available at http://127.0.0.1:19180/
 (the port 19180 can be edited in **.env** file)
