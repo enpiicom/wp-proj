@@ -25,7 +25,7 @@
   ],
   "require": {
     "josegonzalez/dotenv": "4.0.0",
-    "mcaskill/composer-exclude-files": "^3.0.0",
+    "mcaskill/composer-exclude-files": "~4.0.0",
     "johnpbloch/wordpress-core": "^6.0",
     "wp-plugins/woocommerce": "^8.0",
     "wp-theme/storefront": "^4.0",
@@ -33,18 +33,17 @@
     "enpii/enpii-base": "dev-master",
     "enpii/demoda": "*",
     "enpii/appeara-alpha": "*",
-    "php": "^8.0"
+    "php": "^7.3|^8.0"
   },
   "require-dev": {
-    "automattic/vipwpcs": "^3.0.0",
+    "automattic/vipwpcs": "~3.0.0",
     "phpcompatibility/php-compatibility": "^9.3.5",
     "phpunit/phpunit": "^9.6",
+    "phpstan/phpstan": "~1.12",
+    "php-stubs/wordpress-stubs": "~6.6.2",
     "mockery/mockery": "^1.6",
     "brain/monkey": "^2.6.0",
-    "10up/wp_mock": "^1.0.0",
-    "codeception/codeception": "^5.0.0",
-    "codeception/module-asserts": "^3.0",
-    "codeception/module-phpbrowser": "^3.0"
+    "10up/wp_mock": "^1.0.0"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
@@ -141,13 +140,19 @@
       "cp -r `find ./public/vendor/johnpbloch/wordpress-core -maxdepth 1 -mindepth 1 | cut -c3- | grep -vE 'wp-content$|composer.json$|composer.lock$|wp-cli.yml$|README.md$|LICENSE.md$'` ./public",
       "rm -rf `find ./public/vendor/johnpbloch/wordpress-core -maxdepth 1 -mindepth 1 | cut -c3- | grep -vE 'license.txt|readme.html'`"
     ],
-    "phpcbf": "php -d xdebug.max_nesting_level=512 ./public/vendor/bin/phpcbf",
-    "phpcs": "php -d xdebug.max_nesting_level=512 ./public/vendor/bin/phpcs",
-    "codecept": "php -d xdebug.max_nesting_level=512 ./public/vendor/bin/codecept",
-    "codecept-unit": "@codecept run unit",
+    "phpcs": [
+      "./vendor/bin/phpcs"
+    ],
+    "phpstan": [
+      "./vendor/bin/phpstan"
+    ],
+    "phpunit": [
+      "./vendor/bin/phpunit"
+    ],
     "test": [
       "@phpcs",
-      "@codecept-unit"
+      "@phpstan",
+      "@phpunit"
     ]
   }
 }

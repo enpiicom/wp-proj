@@ -5,6 +5,7 @@ services:
       dockerfile: ./dev-docker/Dockerfile
     ports:
       - ${HTTP_EXPOSING_PORT}:80
+      - ${HTTPS_EXPOSING_PORT}:443
     extra_hosts:
       - "host.docker.internal:host-gateway"
     restart: always
@@ -16,7 +17,6 @@ services:
       - ./dev-docker/config/php/xdebug.ini:/etc/php/8.0/cli/conf.d/20-xdebug.ini
       # For WordPress site
       - ./:/var/www/html
-      - ./.env:/var/www/html/.env
       - /var/www/html/public/wp-content/cache
       - /var/www/html/public/wp-content/upgrade
       - /var/www/html/public/wp-content/uploads
@@ -78,16 +78,17 @@ services:
 
   mysql8:
     image: mysql:8
-    command: mysqld --authentication_policy=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    command: mysqld --mysql-native-password=ON --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     ports:
       - ${MYSQL_EXPOSING_PORT}:3306
     volumes:
       - mysql_db:/var/lib/mysql
       - './dev-docker/config/mysql/my.cnf:/etc/mysql/conf.d/my.cnf'
     environment:
-      - MYSQL_ROOT_PASSWORD=$DB_ROOT_PASSWORD
+      - MYSQL_ROOT_PASSWORD
       - MYSQL_DATABASE=$DB_NAME
       - MYSQL_PASSWORD=$DB_PASSWORD
       - MYSQL_USER=$DB_USER
 volumes:
   mysql_db:
+
