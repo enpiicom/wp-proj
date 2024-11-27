@@ -1103,12 +1103,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/enpiicom/wp-plugin-enpii-base.git",
-                "reference": "b3ed448c98671a685cd31fe262b71b96726f558e"
+                "reference": "43551433396686cb4bbeb7f2e35c1ab3bbfa184f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/enpiicom/wp-plugin-enpii-base/zipball/b3ed448c98671a685cd31fe262b71b96726f558e",
-                "reference": "b3ed448c98671a685cd31fe262b71b96726f558e",
+                "url": "https://api.github.com/repos/enpiicom/wp-plugin-enpii-base/zipball/43551433396686cb4bbeb7f2e35c1ab3bbfa184f",
+                "reference": "43551433396686cb4bbeb7f2e35c1ab3bbfa184f",
                 "shasum": ""
             },
             "require": {
@@ -1135,7 +1135,6 @@
             "autoload": {
                 "files": [
                     "src/Foundation/Support/helpers-utils.php",
-                    "src/Enpii_Base_Init.php",
                     "./enpii-base-bootstrap.php",
                     "./enpii-base-init.php"
                 ],
@@ -1143,10 +1142,7 @@
                     "Enpii_Base\\": "src",
                     "Enpii_Base\\Deps\\": "src-deps",
                     "Carbon\\Traits\\Creator\\": "src/Foundation/Support/Carbon/Traits/Creator.php"
-                },
-                "classmap": [
-                    "src/Enpii_Base_Init.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1169,7 +1165,7 @@
             "homepage": "https://enpii.com/wp-plugin-enpii-base",
             "support": {
                 "issues": "https://github.com/enpiicom/wp-plugin-enpii-base/issues",
-                "source": "https://github.com/enpiicom/wp-plugin-enpii-base/tree/v0.8.6"
+                "source": "https://github.com/enpiicom/wp-plugin-enpii-base/tree/v0.8.7"
             },
             "time": "2024-05-23T20:14:04+00:00"
         },

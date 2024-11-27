@@ -85,7 +85,7 @@ services:
       - mysql_db:/var/lib/mysql
       - './dev-docker/config/mysql/my.cnf:/etc/mysql/conf.d/my.cnf'
     environment:
-      - MYSQL_ROOT_PASSWORD
+      - MYSQL_ROOT_PASSWORD=$DB_ROOT_PASSWORD
       - MYSQL_DATABASE=$DB_NAME
       - MYSQL_PASSWORD=$DB_PASSWORD
       - MYSQL_USER=$DB_USER
