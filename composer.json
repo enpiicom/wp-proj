@@ -43,7 +43,10 @@
     "php-stubs/wordpress-stubs": "~6.6.2",
     "mockery/mockery": "^1.6",
     "brain/monkey": "^2.6.0",
-    "10up/wp_mock": "^1.0.0"
+    "10up/wp_mock": "^1.0.0",
+    "codeception/codeception": "^5.0.0",
+    "codeception/module-asserts": "^3.0",
+    "codeception/module-phpbrowser": "^3.0"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
