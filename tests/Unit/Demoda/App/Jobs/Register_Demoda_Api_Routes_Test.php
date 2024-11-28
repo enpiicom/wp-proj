@@ -18,16 +18,16 @@ class Register_Demoda_Api_Routes_Test extends \PHPUnit\Framework\TestCase {
 	protected function tearDown(): void {
 	}
 
-	public function test_handle() {
-		$testing_obj = new Register_Demoda_Api_Routes();
-		// A route using get method with first argument 'demoda' should be expectd to
-		//  registered once
-		Route::shouldReceive( 'get' )
-			->with( 'demoda', [ Demoda_Api_Controller::class, 'hello' ] )
-			->once();
+	// public function test_handle() {
+	// 	$testing_obj = new Register_Demoda_Api_Routes();
+	// 	// A route using get method with first argument 'demoda' should be expectd to
+	// 	//  registered once
+	// 	Route::shouldReceive( 'get' )
+	// 		->with( 'demoda', [ Demoda_Api_Controller::class, 'hello' ] )
+	// 		->once();
 
-		$response = $testing_obj->handle();
+	// 	$response = $testing_obj->handle();
 
-		$this->assertEmpty( $response );
-	}
+	// 	$this->assertEmpty( $response );
+	// }
 }

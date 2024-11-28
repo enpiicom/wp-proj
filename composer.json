@@ -146,11 +146,13 @@
     "phpcbf": "php -d xdebug.max_nesting_level=512 ./public/vendor/bin/phpcbf",
     "phpcs": "php -d xdebug.max_nesting_level=512 ./public/vendor/bin/phpcs",
     "phpstan": "php -d xdebug.max_nesting_level=512 ./public/vendor/bin/phpstan",
+    "phpunit": "php -d xdebug.max_nesting_level=512 ./public/vendor/bin/phpunit",
     "codecept": "php -d xdebug.max_nesting_level=512 ./public/vendor/bin/codecept",
     "codecept-unit": "@codecept run unit",
     "test": [
       "@phpcs",
       "@phpstan",
+      "@phpunit",
       "@codecept-unit"
     ]
   }

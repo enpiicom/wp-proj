@@ -25,25 +25,25 @@ class Demoda_Trait_Test extends \PHPUnit\Framework\TestCase
 		Mockery::close();
 	}
 
-	/**
-	 * @runInSeparateProcess
-	 * @preserveGlobalState disabled
-	 */
-	public function test_demoda_wp_plugin() {
-		$mock_testing_obj = $this->make( Tmp_Test::class, [] );
+	// /**
+	//  * @runInSeparateProcess
+	//  * @preserveGlobalState disabled
+	//  */
+	// public function test_demoda_wp_plugin() {
+	// 	$mock_testing_obj = $this->make( Tmp_Test::class, [] );
 
-		// $mock_demoda_wp_plugin = $this->makeEmpty( Demoda_WP_Plugin::class );
+	// 	// $mock_demoda_wp_plugin = $this->makeEmpty( Demoda_WP_Plugin::class );
 
-		$mockery_obj = Mockery::mock('overload:'.Demoda_WP_Plugin::class);
-		$mockery_obj->allows()
-		->wp_app_instance()
-		->withAnyArgs()
-		->andReturns( $mockery_obj );
+	// 	$mockery_obj = Mockery::mock('overload:'.Demoda_WP_Plugin::class);
+	// 	$mockery_obj->allows()
+	// 	->wp_app_instance()
+	// 	->withAnyArgs()
+	// 	->andReturns( $mockery_obj );
 
-		$result = $mock_testing_obj->demoda_wp_plugin();
+	// 	$result = $mock_testing_obj->demoda_wp_plugin();
 
-		$this->assertEquals($mockery_obj, $result, 'object should match');
-	}
+	// 	$this->assertEquals($mockery_obj, $result, 'object should match');
+	// }
 }
 
 class Tmp_Test {

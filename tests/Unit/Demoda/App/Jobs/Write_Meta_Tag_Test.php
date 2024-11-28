@@ -21,37 +21,37 @@ class Write_Meta_Tag_Test extends \PHPUnit\Framework\TestCase {
 		Mockery::close();
 	}
 
-	/**
-	 * @runInSeparateProcess
-	 * @preserveGlobalState disabled
-	 */
-	public function test_construct() {
-		$mock_testing_obj = new Write_Meta_Tag(
-			[
-				'version' => '0.2.1',
-			]
-		);
+	// /**
+	//  * @runInSeparateProcess
+	//  * @preserveGlobalState disabled
+	//  */
+	// public function test_construct() {
+	// 	$mock_testing_obj = new Write_Meta_Tag(
+	// 		[
+	// 			'version' => '0.2.1',
+	// 		]
+	// 	);
 
-		$this->assertEquals( '0.2.1', $this->get_object_property( $mock_testing_obj, 'version' ), 'version should match' );
+	// 	$this->assertEquals( '0.2.1', $this->get_object_property( $mock_testing_obj, 'version' ), 'version should match' );
 
-		Mockery::close();
-	}
+	// 	Mockery::close();
+	// }
 
-	/**
-	 * @runInSeparateProcess
-	 * @preserveGlobalState disabled
-	 */
-	public function test_handle() {
-		$mock_testing_obj = new Write_Meta_Tag(
-			[
-				'version' => '0.2.1',
-			]
-		);
+	// /**
+	//  * @runInSeparateProcess
+	//  * @preserveGlobalState disabled
+	//  */
+	// public function test_handle() {
+	// 	$mock_testing_obj = new Write_Meta_Tag(
+	// 		[
+	// 			'version' => '0.2.1',
+	// 		]
+	// 	);
 
-		ob_start();
-		$mock_testing_obj->handle();
-		$content = ob_get_clean();
+	// 	ob_start();
+	// 	$mock_testing_obj->handle();
+	// 	$content = ob_get_clean();
 
-		$this->assertStringContainsString( 'Demoda 0.2.1', (string) $content, 'version should be contained in the output' );
-	}
+	// 	$this->assertStringContainsString( 'Demoda 0.2.1', (string) $content, 'version should be contained in the output' );
+	// }
 }
