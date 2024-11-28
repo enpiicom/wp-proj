@@ -12,7 +12,7 @@ composer create-project enpii/wp-proj <folder-name>
   composer create-project -s dev enpii/wp-proj:dev-develop <folder-name>
   ```
 
-- Ensure that you have tne **.env** file, if it doesn't exists, you can copy from the example file
+- Ensure that you have the **.env** file, if it doesn't exists, you can copy from the example file
 ```
 cp .env.example .env
 ```
