@@ -129,7 +129,11 @@
   },
   "scripts": {
     "post-create-project-cmd": [
-      "cp .env.example .env"
+      "cp .env.example .env",
+      "yarn install",
+      "yarn build-plugin",
+      "yarn build-theme",
+      "php -d xdebug.max_nesting_level=512 ./public/vendor/bin/phpunit --stop-on-failure"
     ],
     "post-install-cmd": [
       "cp -r `find ./public/vendor/johnpbloch/wordpress-core -maxdepth 1 -mindepth 1 | cut -c3- | grep -vE 'wp-content$|composer.json$|composer.lock$|wp-cli.yml$|README.md$|LICENSE.md$'` ./public",
