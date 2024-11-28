@@ -150,7 +150,8 @@
     "codecept-unit": "@codecept run unit",
     "test": [
       "@phpcs",
-      "@phpstan"
+      "@phpstan",
+      "@codecept-unit"
     ]
   }
 }
