@@ -143,19 +143,14 @@
       "cp -r `find ./public/vendor/johnpbloch/wordpress-core -maxdepth 1 -mindepth 1 | cut -c3- | grep -vE 'wp-content$|composer.json$|composer.lock$|wp-cli.yml$|README.md$|LICENSE.md$'` ./public",
       "rm -rf `find ./public/vendor/johnpbloch/wordpress-core -maxdepth 1 -mindepth 1 | cut -c3- | grep -vE 'license.txt|readme.html'`"
     ],
-    "phpcs": [
-      "./vendor/bin/phpcs"
-    ],
-    "phpstan": [
-      "./vendor/bin/phpstan"
-    ],
-    "phpunit": [
-      "./vendor/bin/phpunit"
-    ],
+    "phpcbf": "php -d xdebug.max_nesting_level=512 ./public/vendor/bin/phpcbf",
+    "phpcs": "php -d xdebug.max_nesting_level=512 ./public/vendor/bin/phpcs",
+    "phpstan": "php -d xdebug.max_nesting_level=512 ./public/vendor/bin/phpstan",
+    "codecept": "php -d xdebug.max_nesting_level=512 ./public/vendor/bin/codecept",
+    "codecept-unit": "@codecept run unit",
     "test": [
       "@phpcs",
-      "@phpstan",
-      "@phpunit"
+      "@phpstan"
     ]
   }
 }
