@@ -14,6 +14,10 @@ parameters:
         - dev-docker
         - public/vendor
         - tests
+		- */node_modules/*
+		- */wp-admin/*
+		- */wp-includes/*
+		- */uploads/*
 
     scanFiles:
         - public/vendor/php-stubs/wordpress-stubs/wordpress-stubs.php
