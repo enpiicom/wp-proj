@@ -1,0 +1,24 @@
+parameters:
+    level: max  # Set the analysis level (0-8 or 'max'). 'max' is the strictest.
+
+    paths:
+        - ./public/wp-content/plugins/demoda/
+        - ./public/wp-content/themes/appeara-alpha/
+
+    # Excludes certain paths from analysis, such as vendor or test directories
+    excludePaths:
+        - */.git/*
+        - */vendor/*
+        - */src-classes/*
+        - */src-deps/*
+        - dev-docker
+        - public/vendor
+        - tests
+		- */node_modules/*
+		- */wp-admin/*
+		- */wp-includes/*
+		- */uploads/*
+
+    scanFiles:
+        - public/vendor/php-stubs/wordpress-stubs/wordpress-stubs.php
+

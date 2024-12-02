@@ -25,7 +25,7 @@
   ],
   "require": {
     "josegonzalez/dotenv": "4.0.0",
-    "mcaskill/composer-exclude-files": "^3.0.0",
+    "mcaskill/composer-exclude-files": "~4.0.0",
     "johnpbloch/wordpress-core": "^6.0",
     "wp-plugins/woocommerce": "^8.0",
     "wp-theme/storefront": "^4.0",
@@ -39,6 +39,8 @@
     "automattic/vipwpcs": "^3.0.0",
     "phpcompatibility/php-compatibility": "^9.3.5",
     "phpunit/phpunit": "^9.6",
+    "phpstan/phpstan": "~1.12",
+    "php-stubs/wordpress-stubs": "~6.6.2",
     "mockery/mockery": "^1.6",
     "brain/monkey": "^2.6.0",
     "10up/wp_mock": "^1.0.0",
@@ -143,10 +145,14 @@
     ],
     "phpcbf": "php -d xdebug.max_nesting_level=512 ./public/vendor/bin/phpcbf",
     "phpcs": "php -d xdebug.max_nesting_level=512 ./public/vendor/bin/phpcs",
+    "phpstan": "php -d xdebug.max_nesting_level=512 ./public/vendor/bin/phpstan",
+    "phpunit": "php -d xdebug.max_nesting_level=512 ./public/vendor/bin/phpunit",
     "codecept": "php -d xdebug.max_nesting_level=512 ./public/vendor/bin/codecept",
     "codecept-unit": "@codecept run unit",
     "test": [
       "@phpcs",
+      "@phpstan",
+      "@phpunit",
       "@codecept-unit"
     ]
   }
