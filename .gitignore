@@ -2,7 +2,6 @@
 public/*
 !public/wp-content
 !public/wp-config.php
-!public/wp-config-sample.php
 !public/wp-cli.yml
 !public/wp-enpii-base-artisan
 
