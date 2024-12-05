@@ -125,14 +125,14 @@ if ( defined( 'WP_ALLOW_MULTISITE' ) && WP_ALLOW_MULTISITE && defined( 'MULTISIT
 }
 
 // ## Below snippets are for installing plugins, themes from the Admin Dashboard
-define('FS_METHOD', getenv('FS_METHOD') ?: 'direct');
+define( 'FS_METHOD', getenv( 'FS_METHOD' ) ?: 'direct' );
 
-if (!empty(getenv('FS_CHMOD_DIR'))) {
-	define('FS_CHMOD_DIR', getenv('FS_CHMOD_DIR'));
+if ( !empty( getenv( 'FS_CHMOD_DIR' ) ) ) {
+	define( 'FS_CHMOD_DIR', getenv( 'FS_CHMOD_DIR' ) );
 }
 
-if (!empty(getenv('FS_CHMOD_FILE'))) {
-	define('FS_CHMOD_FILE', getenv('FS_CHMOD_FILE'));
+if ( !empty( getenv( 'FS_CHMOD_FILE' ) ) ) {
+	define( 'FS_CHMOD_FILE', getenv( 'FS_CHMOD_FILE' ) );
 }
 
 // For https
