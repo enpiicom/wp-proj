@@ -30,7 +30,7 @@ public/vendor/bin/phpcs $STAGED_FILES
 
 # Run PHPStan for static analysis
 echo "Running PHPStan..."
-/public/vendor/bin/phpstan analyse $STAGED_FILES
+public/vendor/bin/phpstan analyse $STAGED_FILES
 
 # If any of the checks fail, exit with a non-zero status to block the commit
 if [ $? -ne 0 ]; then
